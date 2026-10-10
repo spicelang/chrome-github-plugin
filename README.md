@@ -85,3 +85,7 @@ Project layout:
 | `extension/shared/linguist.js`      | Linguist-like file classification, `.gitattributes` and merging  |
 | `extension/shared/linguist-data.js` | Generated: language colors, aliases, vendor/documentation paths |
 | `extension/options/`                | Options page                                                     |
+
+## License
+
+MIT, see [LICENSE](LICENSE).

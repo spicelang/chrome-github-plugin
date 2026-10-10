@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Chrome extension adding Spice syntax highlighting and language statistics to GitHub",
+  "license": "MIT",
   "scripts": {
     "test": "node --test \"test/**/*.test.js\"",
     "update-linguist": "node scripts/update-linguist-data.mjs"
