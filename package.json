@@ -9,6 +9,6 @@
     "update-linguist": "node scripts/update-linguist-data.mjs"
   },
   "devDependencies": {
-    "jsdom": "^26.1.0"
+    "jsdom": "^30.1.2"
   }
 }
