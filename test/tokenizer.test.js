@@ -87,7 +87,11 @@ test('tokenizeLines splits tokens at line breaks', () => {
 
 test('Spice repository sources: lossless and line-wise consistent', (t) => {
   const files = spiceRepoFiles();
-  if (files.length === 0) return t.skip('Spice repository not found (set SPICE_REPO)');
+  if (files.length === 0) {
+    // In CI, SPICE_REPO is set and a missing checkout must not go unnoticed
+    assert.ok(!process.env.SPICE_REPO, `No Spice sources found in ${process.env.SPICE_REPO}`);
+    return t.skip('Spice repository not found (set SPICE_REPO)');
+  }
   for (const file of files) {
     const src = fs.readFileSync(file, 'utf8');
     assert.equal(tokenize(src).tokens.map((x) => x.text).join(''), src, file);

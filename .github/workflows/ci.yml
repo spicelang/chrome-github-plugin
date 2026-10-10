@@ -1,0 +1,50 @@
+# Workflow for running the tests
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - README.md
+      - LICENSE
+  pull_request:
+    branches:
+      - main
+  # Run weekly to catch tokenizer regressions caused by changes of the Spice sources
+  schedule:
+    - cron: "0 4 * * 1"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # The tokenizer tests check all Spice sources of the compiler and the std
+      - name: Checkout Spice
+        uses: actions/checkout@v7
+        with:
+          repository: spicelang/spice
+          path: spice
+          sparse-checkout: |
+            src
+            std
+            test
+
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm test
+        env:
+          SPICE_REPO: ${{ github.workspace }}/spice
