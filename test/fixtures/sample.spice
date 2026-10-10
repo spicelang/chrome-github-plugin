@@ -1,0 +1,14 @@
+#![core.compiler.alwaysKeepOnNameCollision = true, foo = 1]
+import "std/data/vector" as vec;
+/** Doc @param x the value */
+public f<int> foo<T>(const T& x, unsigned long y = 0x1Ful) {
+  heap Vector<T>* v = nil<heap Vector<T>*>; // comment
+  printf("%d\n", sizeof<T>() + len(arr) + 1.5e3 + 12s + 0b101l);
+  char c = '\'';
+  return this.bar(cast<int>(x)) ? true : false;
+}
+/*
+ * Block
+ */
+#[test]
+f<int> main() {}

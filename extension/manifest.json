@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Spice for GitHub",
+  "version": "1.0.0",
+  "description": "Syntax highlighting and language statistics for the Spice programming language on GitHub.",
+  "homepage_url": "https://www.spicelang.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Spice for GitHub",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://api.github.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://github.com/*", "https://gist.github.com/*"],
+      "js": [
+        "shared/settings.js",
+        "shared/tokenizer.js",
+        "shared/linguist-data.js",
+        "shared/linguist.js",
+        "content/highlight.js",
+        "content/languages.js",
+        "content/main.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

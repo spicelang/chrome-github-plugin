@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Spice for GitHub – Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <header>
+      <img src="../icons/icon48.png" alt="" width="32" height="32" />
+      <h1>Spice for GitHub</h1>
+    </header>
+
+    <section>
+      <h2>Features</h2>
+      <label class="check">
+        <input type="checkbox" id="highlight" />
+        <span>Syntax highlighting for Spice files, diffs and <code>```spice</code> code blocks</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="languageStats" />
+        <span>Include Spice in the language statistics of repositories</span>
+      </label>
+      <label class="row">
+        <span>Spice language color</span>
+        <input type="color" id="spiceColor" />
+        <button type="button" id="resetColor" class="link">Reset</button>
+      </label>
+    </section>
+
+    <section>
+      <h2>GitHub API token <span class="muted">(optional)</span></h2>
+      <p class="muted">
+        The language statistics are computed with the GitHub API. Without a token, GitHub allows 60 requests per hour
+        and only public repositories can be analyzed. A
+        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">fine-grained
+        personal access token</a> with read-only access to <em>Contents</em> raises the limit to 5,000 requests per
+        hour and enables private repositories. The token is stored locally in this browser and is only sent to
+        api.github.com.
+      </p>
+      <div class="row">
+        <input type="password" id="token" placeholder="github_pat_…" autocomplete="off" spellcheck="false" />
+        <button type="button" id="saveToken">Save</button>
+      </div>
+      <p class="row">
+        <button type="button" id="clearCache">Clear cached statistics</button>
+        <span id="status" class="muted" role="status"></span>
+      </p>
+    </section>
+
+    <script src="../shared/settings.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

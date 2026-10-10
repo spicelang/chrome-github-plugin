@@ -1,0 +1,13 @@
+{
+  "name": "spice-for-github",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Chrome extension adding Spice syntax highlighting and language statistics to GitHub",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "update-linguist": "node scripts/update-linguist-data.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "^26.1.0"
+  }
+}

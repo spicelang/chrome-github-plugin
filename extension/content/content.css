@@ -1,0 +1,91 @@
+/*
+ * Syntax highlighting colors. They reuse GitHub's own syntax theme variables, so that the colors follow the selected
+ * GitHub theme. The fallbacks are the colors of the default light theme.
+ */
+.sgh-keyword,
+.sgh-doctag {
+  color: var(--color-prettylights-syntax-keyword, #cf222e);
+}
+.sgh-type {
+  color: var(--color-prettylights-syntax-variable, #953800);
+}
+.sgh-function {
+  color: var(--color-prettylights-syntax-entity, #6639ba);
+}
+.sgh-builtin,
+.sgh-constant,
+.sgh-number,
+.sgh-self {
+  color: var(--color-prettylights-syntax-constant, #0550ae);
+}
+.sgh-string {
+  color: var(--color-prettylights-syntax-string, #0a3069);
+}
+.sgh-escape {
+  color: var(--color-prettylights-syntax-string-regexp, #116329);
+}
+.sgh-attribute {
+  color: var(--color-prettylights-syntax-entity-tag, #0550ae);
+}
+.sgh-comment,
+.sgh-doc {
+  color: var(--color-prettylights-syntax-comment, #59636e);
+}
+
+/* Lines that GitHub renders via data-code-text attributes */
+.sgh-dct[data-code-text]::before {
+  content: attr(data-code-text);
+}
+
+/* Language statistics */
+.sgh-langs-host > :not(h2):not(.sgh-langs) {
+  display: none !important;
+}
+.sgh-langs {
+  margin-top: 8px;
+}
+.sgh-bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: var(--bgColor-neutral-muted, rgba(175, 184, 193, 0.2));
+}
+.sgh-segment {
+  display: block;
+  min-width: 2px;
+}
+.sgh-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sgh-item {
+  display: inline;
+  margin-right: 16px;
+}
+.sgh-entry {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  color: var(--fgColor-default, #1f2328);
+  text-decoration: none;
+}
+a.sgh-entry:hover .sgh-name {
+  color: var(--fgColor-accent, #0969da);
+}
+.sgh-dot {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.sgh-name {
+  font-weight: 600;
+  margin-right: 4px;
+}
+.sgh-percent {
+  color: var(--fgColor-muted, #59636e);
+}
