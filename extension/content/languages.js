@@ -57,7 +57,9 @@
         .catch((e) => ({ ok: false, error: e.message }))
         .then((response) => {
           if (!response || !response.ok) {
-            console.warn(`[Spice for GitHub] Could not load language stats: ${response && response.error}`);
+            // 404 is what the API answers for private repositories without a token, which is expected
+            const log = response && response.status === 404 ? console.debug : console.warn;
+            log(`[Spice for GitHub] Could not load language stats: ${response && response.error}`);
           }
           entry.result = response || { ok: false, error: 'No response' };
           entry.time = Date.now();
@@ -241,5 +243,17 @@
     onUpdate = handler;
   }
 
-  (root.SpiceGH = root.SpiceGH || {}).languages = { run, clear: removeAll, currentRepo, setUpdateHandler };
+  /** Returns the cache entry of a repository without requesting it: {result, time} or undefined. */
+  function peekStats(repo) {
+    return statsCache.get(repo.key);
+  }
+
+  (root.SpiceGH = root.SpiceGH || {}).languages = {
+    run,
+    clear: removeAll,
+    currentRepo,
+    setUpdateHandler,
+    requestStats,
+    peekStats,
+  };
 })(globalThis);

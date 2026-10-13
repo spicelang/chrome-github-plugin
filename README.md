@@ -10,6 +10,9 @@ A Chrome extension that brings the [Spice programming language](https://www.spic
   - Markdown code blocks marked as ` ```spice ` in READMEs, issues, comments, etc.
 - **Language statistics**: Spice is added to the language bar in the sidebar of repositories. Repositories without
   any language known to GitHub (e.g. pure Spice repositories) get a new "Languages" section.
+- **Primary language in repository lists**: if Spice makes up the majority of a repository's code, it is shown as the
+  language in lists of repositories (profiles, organizations, search results) instead of GitHub's own guess. Every
+  listed repository costs API requests, so a [token](#github-token-optional) is recommended here.
 
 The highlighting uses GitHub's own syntax theme colors, so it matches the selected light/dark theme.
 

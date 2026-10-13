@@ -36,6 +36,7 @@
         "shared/linguist.js",
         "content/highlight.js",
         "content/languages.js",
+        "content/repolist.js",
         "content/main.js"
       ],
       "css": ["content/content.css"],

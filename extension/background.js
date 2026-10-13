@@ -72,6 +72,9 @@ async function cachedApi(path, { transform = (body) => body, raw = false, fallba
       const reset = new Date(parseInt(res.headers.get('x-ratelimit-reset') || '0', 10) * 1000);
       throw new ApiError(res.status, `GitHub API rate limit exceeded until ${reset.toLocaleTimeString()}`);
     }
+    if (res.status === 404 && !token) {
+      throw new ApiError(404, `GitHub API returned 404 for ${path} (private repository? Set a token in the options)`);
+    }
     throw new ApiError(res.status, `GitHub API returned ${res.status} for ${path}`);
   }
 

@@ -5,7 +5,7 @@
 (function (root) {
   'use strict';
 
-  const { highlight, languages, DEFAULT_SETTINGS } = root.SpiceGH;
+  const { highlight, languages, repoList, DEFAULT_SETTINGS } = root.SpiceGH;
   const settings = { ...DEFAULT_SETTINGS };
   let scheduled = null;
 
@@ -13,7 +13,10 @@
     scheduled = null;
     try {
       if (settings.highlight) highlight.run();
-      if (settings.languageStats) languages.run(settings);
+      if (settings.languageStats) {
+        languages.run(settings);
+        repoList.run(settings);
+      }
     } catch (e) {
       console.error('[Spice for GitHub]', e);
     }
@@ -37,6 +40,7 @@
     }
     if (!settings.highlight) highlight.clear();
     languages.clear(root.document);
+    repoList.clear(root.document);
     schedule();
   });
 
