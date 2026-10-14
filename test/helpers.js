@@ -9,6 +9,7 @@ const CONTENT_SCRIPTS = [
   'shared/linguist.js',
   'content/highlight.js',
   'content/languages.js',
+  'content/repolist.js',
 ];
 const sources = CONTENT_SCRIPTS.map((file) => fs.readFileSync(path.join(__dirname, '..', 'extension', file), 'utf8'));
 
